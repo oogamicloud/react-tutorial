@@ -1,27 +1,28 @@
 import React from "react";
+import Header from "./Header/Header"; 
+import Footer from "./Footer/Footer";
+import Jsxt from "./Jsxt/Jsxt";
+import Statechange from "./Statechange/Statechange"
 
 class Layout extends React.Component {
 
-    constructor(){
-        super(); //親クラスのコンストラクタの呼び出し
-        this.name = "constractorのTsutomu"; //メンバー変数の定義
-    }
     render()  {
-        let name = "renderメソッドのTsutomu";
+        // setTimeout(function(){},time)
+        //setStateメソッドはstate状態を変更し再レンダリングさせる基本メソッド
+        //配列でcomponentsをJSXにわたすこともできる。
+        let componentsArry = [<Header />,<Footer />];
+        //Headerのpropsにわたす値
+        const title = "propsで渡す値(title)";
         return (
+            //React Componentは再利用可能
             <div>
-                <h1>Welcom!3</h1>
-                <h1>It's works!</h1>
-                <h1>He is {name}!</h1>
-                <h1>He is {this.name}!</h1>                
-                <h1>The answer is {1+2}!</h1>
-                <h1>The calclation's result is {this.get_calculate(10)}!</h1>
-                <h1>The fast calculation's result is {((num) => { return 1 + num; })(20)}!</h1>
+                <Statechange />
+                <Header name={"Headerコンポーネントタグの中でstringで渡すnameの値"} title={title} />
+                <Jsxt />
+                <Footer />
+                {componentsArry}
             </div>
         );
-    }
-    get_calculate(num) {
-        return 1 + num;
     }
 }
 
